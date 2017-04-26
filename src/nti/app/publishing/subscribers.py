@@ -14,13 +14,13 @@ from zope import component
 from nti.app.publishing import TRX_TYPE_PUBLISH
 from nti.app.publishing import TRX_TYPE_UNPUBLISH
 
-from nti.coremetadata.interfaces import IPublishable
-from nti.coremetadata.interfaces import ICalendarPublishable
-from nti.coremetadata.interfaces import IObjectPublishedEvent
-from nti.coremetadata.interfaces import IObjectUnpublishedEvent
-from nti.coremetadata.interfaces import ICalendarPublishableModifiedEvent
-
 from nti.externalization.internalization import notifyModified
+
+from nti.publishing.interfaces import IPublishable
+from nti.publishing.interfaces import ICalendarPublishable
+from nti.publishing.interfaces import IObjectPublishedEvent
+from nti.publishing.interfaces import IObjectUnpublishedEvent
+from nti.publishing.interfaces import ICalendarPublishableModifiedEvent
 
 from nti.recorder.interfaces import IRecordable
 
@@ -41,5 +41,5 @@ def _record_unpublished(obj, event):
 
 @component.adapter(ICalendarPublishable, ICalendarPublishableModifiedEvent)
 def _on_calendar_publishable_modified(obj, event):
-    notifyModified(obj, {'publishBeginning': event.publishBeginning,
-                         'publishEnding': event.publishBeginning})
+    notifyModified(obj, {u'publishBeginning': event.publishBeginning,
+                         u'publishEnding': event.publishBeginning})

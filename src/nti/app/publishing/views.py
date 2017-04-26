@@ -32,9 +32,9 @@ from nti.app.renderers.caching import uncached_in_response
 
 from nti.dataserver import authorization as nauth
 
-from nti.dataserver.interfaces import IPublishable
-from nti.dataserver.interfaces import IDefaultPublished
-from nti.dataserver.interfaces import ICalendarPublishable
+from nti.publishing.interfaces import IPublishable
+from nti.publishing.interfaces import IDefaultPublished
+from nti.publishing.interfaces import ICalendarPublishable
 
 
 class _AbstractPublishingView(object):

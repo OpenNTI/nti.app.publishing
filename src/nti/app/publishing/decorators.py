@@ -24,11 +24,7 @@ from nti.app.renderers.decorators import AbstractTwoStateViewLinkDecorator
 
 from nti.appserver.pyramid_authorization import has_permission
 
-from nti.coremetadata.interfaces import INoPublishLink
-
 from nti.dataserver.authorization import ACT_CONTENT_EDIT
-
-from nti.dataserver.interfaces import ICalendarPublishable
 
 from nti.externalization.interfaces import StandardExternalFields
 from nti.externalization.interfaces import IExternalMappingDecorator
@@ -36,6 +32,10 @@ from nti.externalization.interfaces import IExternalMappingDecorator
 from nti.externalization.singleton import SingletonDecorator
 
 from nti.links.links import Link
+
+from nti.publishing.interfaces import INoPublishLink
+from nti.publishing.interfaces import ICalendarPublishable
+
 
 LINKS = StandardExternalFields.LINKS
 
