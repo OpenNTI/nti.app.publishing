@@ -19,12 +19,12 @@
 	<!-- Publishing workflow -->
 	<subscriber factory=".decorators.PublishLinkDecorator"
 				provides="nti.externalization.interfaces.IExternalMappingDecorator"
-				for="nti.coremetadata.interfaces.IPublishable
+				for="nti.publishing.interfaces.IPublishable
 					 pyramid.interfaces.IRequest"/>
 
 	<subscriber factory=".decorators.CalendarPublishStateDecorator"
 				provides="nti.externalization.interfaces.IExternalMappingDecorator"
-				for="nti.coremetadata.interfaces.ICalendarPublishable
+				for="nti.publishing.interfaces.ICalendarPublishable
 					 pyramid.interfaces.IRequest"/>
 
 </configure>
