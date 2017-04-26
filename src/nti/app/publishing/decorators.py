@@ -36,7 +36,6 @@ from nti.links.links import Link
 from nti.publishing.interfaces import INoPublishLink
 from nti.publishing.interfaces import ICalendarPublishable
 
-
 LINKS = StandardExternalFields.LINKS
 
 
