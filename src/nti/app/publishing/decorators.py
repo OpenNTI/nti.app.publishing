@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-External decorators to provide access to the things exposed through this package.
-
 .. $Id$
 """
 
