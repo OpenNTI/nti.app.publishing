@@ -1,6 +1,6 @@
-================
+====================
  nti.app.publishing
-================
+====================
 
 .. image:: https://travis-ci.org/NextThought/nti.app.publishing.svg?branch=master
     :target: https://travis-ci.org/NextThought/nti.publishing
