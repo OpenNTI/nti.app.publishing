@@ -136,7 +136,7 @@ class CalendarPublishView(_AbstractPublishingView,
         start, end = self._get_dates()
         obj.publish(start=start, end=end)
 
-    def _test_provides(self, context):
+    def _test_provides(self, unused_context):
         # Allow the underlying implementation to handle state.
         return True
 
@@ -152,6 +152,6 @@ class CalendarUnpublishView(_AbstractPublishingView):
     def _do_provide(self, context):
         context.unpublish()
 
-    def _test_provides(self, context):
+    def _test_provides(self, unused_context):
         # Allow the underlying implementation to handle state.
         return True
