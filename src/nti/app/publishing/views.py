@@ -14,12 +14,10 @@ from abc import abstractmethod
 
 from datetime import datetime
 
-from pyramid.view import view_config
-from pyramid.view import view_defaults
-
 from requests.structures import CaseInsensitiveDict
 
-from nti.app.externalization.internalization import read_body_as_external_object
+from pyramid.view import view_config
+from pyramid.view import view_defaults
 
 from nti.app.externalization.view_mixins import ModeledContentUploadRequestUtilsMixin
 
@@ -122,7 +120,7 @@ class CalendarPublishView(_AbstractPublishingView,
     def _get_dates(self):
         start = end = None
         if self.request.body:
-            values = read_body_as_external_object(self.request)
+            values = self.readInput()
             values = CaseInsensitiveDict(values)
             start = values.get('publishBeginning', None)
             end = values.get('publishEnding', None)
