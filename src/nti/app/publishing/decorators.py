@@ -69,10 +69,10 @@ class PublishLinkDecorator(AbstractTwoStateViewLinkDecorator):
     false_view = VIEW_PUBLISH
     true_view = VIEW_UNPUBLISH
 
-    def link_predicate(self, context, current_username):
+    def link_predicate(self, context, unused_current_username):
         return context.is_published()
 
-    def _do_decorate_external_link(self, context, mapping, extra_elements=()):
+    def _do_decorate_external_link(self, context, mapping, unused_extra_elements=()):
         # ICalendarPublishables have their own publish link decorator.
         if      _expose_links(context, self.request) \
             and not ICalendarPublishable.providedBy(context):

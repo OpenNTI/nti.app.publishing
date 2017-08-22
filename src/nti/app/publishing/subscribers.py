@@ -28,13 +28,13 @@ from nti.recorder.utils import record_transaction
 
 
 @component.adapter(IPublishable, IObjectPublishedEvent)
-def _record_published(obj, event):
+def _record_published(obj, unused_event):
     if IRecordable.providedBy(obj):
         record_transaction(obj, type_=TRX_TYPE_PUBLISH)
 
 
 @component.adapter(IPublishable, IObjectUnpublishedEvent)
-def _record_unpublished(obj, event):
+def _record_unpublished(obj, unused_event):
     if IRecordable.providedBy(obj):
         record_transaction(obj, type_=TRX_TYPE_UNPUBLISH)
 

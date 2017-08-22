@@ -11,7 +11,7 @@ entry_points = {
 
 TESTS_REQUIRE = [
     'nti.app.testing',
-    'pyhamcrest',
+    'nti.testing',
     'zope.testrunner',
 ]
 
@@ -38,6 +38,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: Implementation :: CPython',
     ],
+    url="https://github.com/NextThought/nti.app.publishing",
     zip_safe=True,
     packages=find_packages('src'),
     package_dir={'': 'src'},

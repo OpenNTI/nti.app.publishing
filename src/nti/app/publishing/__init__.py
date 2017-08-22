@@ -13,10 +13,10 @@ import zope.i18nmessageid
 MessageFactory = zope.i18nmessageid.MessageFactory('nti.dataserver')
 
 #: Publish view name
-VIEW_PUBLISH = u"publish"
+VIEW_PUBLISH = "publish"
 
 #: Unpublish view name
-VIEW_UNPUBLISH = u"unpublish"
+VIEW_UNPUBLISH = "unpublish"
 
 #: Publish transaction type
 TRX_TYPE_PUBLISH = u'publish'
