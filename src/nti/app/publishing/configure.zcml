@@ -10,7 +10,11 @@
 
 	<include package="nti.recorder" />
 	<include package="nti.publishing" />
-	
+
+	<!-- Database creation and migration -->
+	<include package="zope.generations" />
+	<include package="zope.generations" file="subscriber.zcml" />
+
 	<!-- Generations -->
 	<utility factory=".generations.install._SchemaManager"
 			 name="nti.dataserver-publishing"
