@@ -11,6 +11,11 @@
 	<include package="nti.recorder" />
 	<include package="nti.publishing" />
 	
+	<!-- Generations -->
+	<utility factory=".generations.install._SchemaManager"
+			 name="nti.dataserver-publishing"
+			 provides="zope.generations.interfaces.IInstallableSchemaManager" />
+
 	<!-- Subscribers -->
 	<subscriber handler=".subscribers._record_published" />
 	<subscriber handler=".subscribers._record_unpublished" />
