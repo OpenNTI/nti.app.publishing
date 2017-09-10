@@ -12,9 +12,6 @@ logger = __import__('logging').getLogger(__name__)
 from zope import component
 from zope import interface
 
-from nti.contenttypes.courses.interfaces import ICourseCatalog
-from nti.contenttypes.courses.interfaces import ICourseInstance
-
 from nti.dataserver.contenttypes.forums.interfaces import IDFLBoard
 from nti.dataserver.contenttypes.forums.interfaces import IPersonalBlog
 from nti.dataserver.contenttypes.forums.interfaces import ICommunityBoard
@@ -51,7 +48,8 @@ class EntityPublishables(object):
         users_folder = IShardLayout(dataserver).users_folder
         return users_folder.values()
 
-    def _process_entities(self, result):
+    def iter_objects(self):
+        result = []
         for entity in self._all_entities():
             if ICommunity.providedBy(entity):
                 self._process_board(ICommunityBoard(entity, None), result)
@@ -62,12 +60,4 @@ class EntityPublishables(object):
                     if IDynamicSharingTargetFriendsList.providedBy(fl):
                         self._process_board(IDFLBoard(entity, None),
                                             result)
-
-    def iter_objects(self):
-        result = []
-        catalog = component.queryUtility(ICourseCatalog)
-        if catalog is not None:
-            for entry in catalog.iterCatalogEntries():
-                course = ICourseInstance(entry)
-                self._process_course(course, result)
         return result
