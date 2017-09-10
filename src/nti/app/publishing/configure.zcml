@@ -36,4 +36,7 @@
 				for="nti.publishing.interfaces.ICalendarPublishable
 					 pyramid.interfaces.IRequest"/>
 
+	<!-- Publishables -->
+	<utility factory=".publishables.EntityPublishables" name="entities" />
+	
 </configure>
