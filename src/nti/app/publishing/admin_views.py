@@ -22,6 +22,8 @@ from pyramid.view import view_defaults
 
 from nti.app.base.abstract_views import AbstractAuthenticatedView
 
+from nti.app.publishing import PublishingPathAdapter
+
 from nti.dataserver.authorization import ACT_NTI_ADMIN
 
 from nti.dataserver.interfaces import IDataserverFolder
@@ -42,11 +44,12 @@ TOTAL = StandardExternalFields.TOTAL
 ITEM_COUNT = StandardExternalFields.ITEM_COUNT
 
 
-@view_config(permission=ACT_NTI_ADMIN)
+@view_config(context=IDataserverFolder)
+@view_config(context=PublishingPathAdapter)
 @view_defaults(route_name='objects.generic.traversal',
                renderer='rest',
                request_method='POST',
-               context=IDataserverFolder,
+               permission=ACT_NTI_ADMIN,
                name='RebuildPublishingCatalog')
 class RebuildPublishingCatalogView(AbstractAuthenticatedView):
 
@@ -76,8 +79,8 @@ class RebuildPublishingCatalogView(AbstractAuthenticatedView):
                         continue
                     count += 1
                     seen.add(doc_id)
-                    catalog.index_doc(doc_id, publishable)
-                    metadata.index_doc(doc_id, publishable)
+                    catalog.force_index_doc(doc_id, publishable)
+                    metadata.force_index_doc(doc_id, publishable)
                 items[host_site.__name__] = count
         result = LocatedExternalDict()
         result[ITEMS] = items
