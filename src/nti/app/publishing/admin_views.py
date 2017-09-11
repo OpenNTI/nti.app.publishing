@@ -17,6 +17,8 @@ from zope.component.hooks import site as current_site
 
 from zope.intid.interfaces import IIntIds
 
+from ZODB.POSException import POSError
+
 from pyramid.view import view_config
 from pyramid.view import view_defaults
 
@@ -77,10 +79,14 @@ class RebuildPublishingCatalogView(AbstractAuthenticatedView):
                     doc_id = intids.queryId(publishable)
                     if doc_id is None or doc_id in seen:
                         continue
-                    count += 1
-                    seen.add(doc_id)
-                    catalog.force_index_doc(doc_id, publishable)
-                    metadata.force_index_doc(doc_id, publishable)
+                    try:
+                        seen.add(doc_id)
+                        catalog.force_index_doc(doc_id, publishable)
+                        metadata.force_index_doc(doc_id, publishable)
+                    except POSError:
+                        logger.error("Error whilde indexing object %s", doc_id)
+                    else:
+                        count += 1
                 items[host_site.__name__] = count
         result = LocatedExternalDict()
         result[ITEMS] = items
