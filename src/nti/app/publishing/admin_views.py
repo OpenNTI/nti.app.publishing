@@ -84,7 +84,8 @@ class RebuildPublishingCatalogView(AbstractAuthenticatedView):
                         catalog.force_index_doc(doc_id, publishable)
                         metadata.force_index_doc(doc_id, publishable)
                     except POSError:
-                        logger.error("Error whilde indexing object %s", doc_id)
+                        logger.error("Error while indexing object %s/%s", 
+                                     doc_id, type(publishable))
                     else:
                         count += 1
                 items[host_site.__name__] = count
