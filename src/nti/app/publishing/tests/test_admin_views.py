@@ -55,7 +55,7 @@ class TestAdminViews(ApplicationLayerTest):
         gsm = component.getGlobalSiteManager()
         gsm.registerUtility(utility, IPublishables, "bleach")
         try:
-            res = self.testapp.post('/dataserver2/@@RebuildPublishingCatalog',
+            res = self.testapp.post('/dataserver2/publishing/@@RebuildPublishingCatalog',
                                     status=200)
             assert_that(res.json_body,
                         has_entries('Total', is_(greater_than_or_equal_to(1)),

@@ -39,4 +39,10 @@
 	<!-- Publishables -->
 	<utility factory=".publishables.EntityPublishables" name="entities" />
 	
+	<!-- Traversal -->
+	<adapter name="publishing"
+			 for="nti.dataserver.interfaces.IDataserverFolder pyramid.interfaces.IRequest"
+			 factory=".PublishingPathAdapter"
+			 provides="zope.traversing.interfaces.IPathAdapter" />
+			 
 </configure>
