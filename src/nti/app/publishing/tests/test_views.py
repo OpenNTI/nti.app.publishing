@@ -25,7 +25,7 @@ from nti.dataserver.users import User
 
 from nti.externalization.interfaces import IInternalObjectExternalizer
 
-from nti.externalization.oids import to_external_ntiid_oid
+from nti.ntiids.oids import to_external_ntiid_oid
 
 from nti.publishing.mixins import PublishableMixin
 
