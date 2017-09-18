@@ -21,7 +21,7 @@ from nti.app.publishing import TRX_TYPE_UNPUBLISH
 
 from nti.base.interfaces import ICreated
 
-from nti.dataserver.users import User
+from nti.dataserver.users.users import User
 
 from nti.externalization.interfaces import IInternalObjectExternalizer
 
