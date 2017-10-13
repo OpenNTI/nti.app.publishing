@@ -4,10 +4,9 @@
 .. $Id$
 """
 
-from __future__ import print_function, absolute_import, division
-__docformat__ = "restructuredtext en"
-
-logger = __import__('logging').getLogger(__name__)
+from __future__ import division
+from __future__ import print_function
+from __future__ import absolute_import
 
 from zope import interface
 
@@ -27,7 +26,7 @@ from nti.dataserver.authorization import ACT_CONTENT_EDIT
 from nti.externalization.interfaces import StandardExternalFields
 from nti.externalization.interfaces import IExternalMappingDecorator
 
-from nti.externalization.singleton import SingletonDecorator
+from nti.externalization.singleton import Singleton
 
 from nti.links.links import Link
 
@@ -35,6 +34,8 @@ from nti.publishing.interfaces import INoPublishLink
 from nti.publishing.interfaces import ICalendarPublishable
 
 LINKS = StandardExternalFields.LINKS
+
+logger = __import__('logging').getLogger(__name__)
 
 
 def _acl_decoration(request):
@@ -86,14 +87,13 @@ class PublishLinkDecorator(AbstractTwoStateViewLinkDecorator):
 
 
 @interface.implementer(IExternalMappingDecorator)
-class CalendarPublishStateDecorator(object):
+class CalendarPublishStateDecorator(Singleton):
     """
     Adds both the `publish` and `unpublish` links to our outbound object.
 
     Since `ICalendarPublishable` objects have three possible states, the
     client may call any of these links from any state.
     """
-    __metaclass__ = SingletonDecorator
 
     def decorateExternalMapping(self, context, result):
         request = get_current_request()
