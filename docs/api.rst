@@ -7,6 +7,11 @@ Admin Views
 
 .. automodule:: nti.app.publishing.admin_views
 
+Catalog
+=======
+
+.. automodule:: nti.app.publishing.catalog
+
 Decorators
 ==========
 

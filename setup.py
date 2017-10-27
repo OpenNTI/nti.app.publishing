@@ -2,10 +2,11 @@ import codecs
 from setuptools import setup, find_packages
 
 entry_points = {
-    'console_scripts': [
-    ],
     "z3c.autoinclude.plugin": [
         'target = nti.app',
+    ],
+    'console_scripts': [
+        "nti_rebuild_publishing_catalog = nti.app.publishing.scripts.nti_rebuild_publishing_catalog:main",
     ],
 }
 
@@ -38,6 +39,7 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
     ],
     url="https://github.com/NextThought/nti.app.publishing",
     zip_safe=True,
