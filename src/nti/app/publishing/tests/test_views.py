@@ -5,8 +5,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import absolute_import
 
-# disable: accessing protected members, too many methods
-# pylint: disable=W0212,R0904
+# pylint: disable=protected-access,too-many-public-methods
 
 from hamcrest import is_
 from hamcrest import none
@@ -20,9 +19,15 @@ from zope.annotation.interfaces import IAttributeAnnotatable
 from nti.app.publishing import TRX_TYPE_PUBLISH
 from nti.app.publishing import TRX_TYPE_UNPUBLISH
 
+from nti.app.testing.application_webtest import ApplicationLayerTest
+
+from nti.app.testing.decorators import WithSharedApplicationMockDS
+
 from nti.base.interfaces import ICreated
 
 from nti.dataserver.users.users import User
+
+from nti.dataserver.tests import mock_dataserver
 
 from nti.externalization.interfaces import IInternalObjectExternalizer
 
@@ -35,12 +40,6 @@ from nti.recorder.interfaces import ITransactionRecordHistory
 from nti.recorder.mixins import RecordableMixin
 
 from nti.zodb.persistentproperty import PersistentPropertyHolder
-
-from nti.app.testing.application_webtest import ApplicationLayerTest
-
-from nti.app.testing.decorators import WithSharedApplicationMockDS
-
-from nti.dataserver.tests import mock_dataserver
 
 
 @interface.implementer(ICreated, 
@@ -65,7 +64,7 @@ class TestViews(ApplicationLayerTest):
         current_transaction = mock_dataserver.current_transaction
         current_transaction.add(ichigo)
         self.ds.root['ichigo'] = ichigo
-        ichigo.creator = user
+        ichigo.creator = user  # pylint: disable=attribute-defined-outside-init
         return ichigo
 
     @WithSharedApplicationMockDS(users=True, testapp=True)

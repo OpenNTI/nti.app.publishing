@@ -131,7 +131,7 @@ class CalendarPublishView(_AbstractPublishingView,
                 end = self._to_date(end)
         return start, end
 
-    def _do_provide(self, obj):
+    def _do_provide(self, obj):  # pylint: disable=arguments-differ
         start, end = self._get_dates()
         obj.publish(start=start, end=end)
 

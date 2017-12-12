@@ -47,6 +47,7 @@ class EntityPublishables(object):
     def _all_entities(self):
         dataserver = component.getUtility(IDataserver)
         users_folder = IShardLayout(dataserver).users_folder
+        # pylint: disable=no-member
         return users_folder.values()
 
     def iter_objects(self):

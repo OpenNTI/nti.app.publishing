@@ -5,8 +5,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import absolute_import
 
-# disable: accessing protected members, too many methods
-# pylint: disable=W0212,R0904
+# pylint: disable=protected-access,too-many-public-methods
 
 from hamcrest import is_
 from hamcrest import assert_that
@@ -16,7 +15,13 @@ from hamcrest import greater_than_or_equal_to
 from zope import component
 from zope import interface
 
+from nti.app.testing.application_webtest import ApplicationLayerTest
+
+from nti.app.testing.decorators import WithSharedApplicationMockDS
+
 from nti.dataserver.interfaces import IDataserver
+
+from nti.dataserver.tests import mock_dataserver
 
 from nti.publishing.interfaces import IPublishable
 from nti.publishing.interfaces import IPublishables
@@ -24,12 +29,6 @@ from nti.publishing.interfaces import IPublishables
 from nti.publishing.mixins import PublishableMixin
 
 from nti.zodb.persistentproperty import PersistentPropertyHolder
-
-from nti.app.testing.application_webtest import ApplicationLayerTest
-
-from nti.app.testing.decorators import WithSharedApplicationMockDS
-
-from nti.dataserver.tests import mock_dataserver
 
 
 @interface.implementer(IPublishable)

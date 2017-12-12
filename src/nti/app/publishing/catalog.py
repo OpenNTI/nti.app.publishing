@@ -45,9 +45,9 @@ def rebuild_publishing_catalog(seen=None, metadata=True):
                     continue
                 try:
                     seen.add(doc_id)
-                    catalog.force_index_doc(doc_id, publishable)
+                    catalog.index_doc(doc_id, publishable)
                     if metadata:
-                        metadata_catalog.force_index_doc(doc_id, publishable)
+                        metadata_catalog.index_doc(doc_id, publishable)
                 except POSError:
                     logger.error("Error while indexing object %s/%s",
                                  doc_id, type(publishable))
