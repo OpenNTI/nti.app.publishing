@@ -8,13 +8,13 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import absolute_import
 
+from ZODB.POSException import POSError
+
 from zope import component
 
 from zope.component.hooks import site as current_site
 
 from zope.intid.interfaces import IIntIds
-
-from ZODB.POSException import POSError
 
 from nti.dataserver.metadata.index import get_metadata_catalog
 
